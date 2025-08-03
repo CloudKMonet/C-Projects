@@ -8,80 +8,119 @@ using System.Threading.Tasks;
 using static System.Console;
 
 /* This is a Claculator App. One that specifically uses switch case! Switch is a great way to mae the code editable
-    in case I want to add more to the code at a later date- which I probably will! 
+    in case I want to add more to the code at a later date- which I probably will! I've added new functionality to the calcultor!
+    Feel free to take a look- I had to add another switch case to deal with the four new operations, exit, AC, Percent, and Toggle.
 */
 
 namespace Multiple_New_Projects_and_Revamps.New_Projects
 {
     internal class CalculatorButMyVersion
     {
+       
         static void Main()
         {
             WriteLine("This is my Calculator- but Better! :D");
-            WriteLine("Please choose an operation by entering 1,2,3, or 4: ");
-
             //using the '\n' is a way to break up the prompt so when you run it the output is organized.
-            WriteLine(" 1.Add\n 2.Subtract\n 3.Multiply\n 4.Divide 5.+/-\n 6.%\n 7.AC");
+            WriteLine("Type a Number or one of the Operators: 1.Add\n 2.Subtract\n 3.Multiply\n 4.Divide\n 5.+/-\n 6.%\n 7.AC\n 8.Exit");
 
-            int op = Convert.ToInt32(Console.ReadLine());
+            //new declarations for processing user input
+            double num1 = 0;
+            double num2 = 0;
+            string input;
 
-            WriteLine("Enter the First Number: ");
-            double num1 = Convert.ToDouble(Console.ReadLine());
-
-            WriteLine("Enter the Second Number: ");
-            double num2 = Convert.ToDouble(Console.ReadLine());
-
-            //Operations!
+            //Operations! Processing uses the x and y variables instead of the num variables.
             static double Add(double x, double y) => x + y;
             static double Subtract(double x, double y) => x - y;
             static double Multiply(double x, double y) => x * y;
             static double Divide(double x, double y) => x / y;
+            /*These have a urany operation aka a single x to do the opertion is needed */
             static double Toggle(double x) => -x;
-            static double Percentage(double x) => x / 100;
-            static clear() => 0;
-            
+            static double Percent(double x) => x / 100;
+            static double Clear() => 0;
 
-            /*So why didn't we do it num1 + num2 and so on? The above code declared Add, Subtract, Multiply, and
-             * Divide. The way I decided to do this created methods out of the operations, now they can be called by name
-             * and perform the operation based upon the previously input num1 and num2. In math we typically use x and y 
-             * when discussing variables- the inputs are variables hence the why we would structure with x and y. 
-             * Should we want, we can continue to add more operators while keeping our code organized neatly. The Lambda 
-             * or Rocket, is how we can funnel the operators to work as intended. 
-            */
-
-            //I also decided switch case was a fun way to keep things organized as well as structured- in case I add more
-            switch (op)
+            while (true)
             {
-                case 1:
-                    WriteLine($"Result: {Add(num1, num2)}");
-                    break;
-                case 2:
-                    WriteLine($"Result: {Subtract(num1, num2)}");
-                    break;
-                case 3:
-                    WriteLine($"Result: {Multiply(num1, num2)}");
-                    break;
-                case 4:
-                    if (num2 != 0)
-                        WriteLine($"Result: {Divide(num1, num2)}");
-                    else
-                        WriteLine("Cannot Divide by Zero! :(");
-                    break;
-                case 5:
-                    WriteLine($"Result: {Toggle(num1, num2)}");
-                    break;
-                case 6:
-                    WriteLine($"Result: {MPercentage(num1, num2)}");
-                    break;
-                case 7:
-                    WriteLine($"Result: {Multiply(num1, num2)}");
-                    break;
-                default:
-                    WriteLine("Invalid Option- please input correctly, for the calcultaor to work as intended!");
-                    break;
+                WriteLine($"\nCurrent Number: {num1}");
+                WriteLine("Enter an operator or a number: ");
+                input = ReadLine().Trim();
+
+                //here we try parsing a new number as the input
+                if (double.TryParse(input,out double parsedInput ))
+                {
+                    num1 = parsedInput;
+                    continue;
+                }
+
+                //switch case for the input(s)
+                switch (input.ToLower())
+                {
+                    case "ac":
+                        num1 = Clear();
+                        WriteLine($"Result: {num1}");
+                        break;
+                    case "+/-":
+                        num1 = Toggle(num1);
+                        WriteLine($"Result: {num1}");
+                        break;
+                    case "%":
+                        num1 = Percent(num1);
+                        WriteLine($"Result: {num1}");
+                        break;
+                    //an exit would be helpful if the user wanted to end the app
+                    case "exit":
+                        WriteLine("Buh-Bye! Come back soon!");
+                        return;
+
+                    case "+":
+                    case "-":
+                    case "*":
+                    case "/":
+                        WriteLine("Enter a second number please: ");
+                        string secondinput = ReadLine();
+
+                        if (double.TryParse(secondinput, out num2))
+                        {
+                            double result = 0;
+                            //here is the afformentioned 'x' and 'y' variables
+                            double x = num1;
+                            double y = num2;
+
+                            //with result declared we can clean up a little bit and instead of string the result...
+                            switch (input)
+                            {
+                                case "+": result = Add(x, y); break;
+                                    
+                                case "-": result = Subtract(x, y); break;
+
+                                case "*": result = Multiply(x, y); break;
+
+                                //the usercannot divide by zero; that is a rule
+                                case "/":
+                                    //we'll make use of the Divide by Zero Exception Class to instantiate the rule above
+                                    result = (y == 0) ? throw new DivideByZeroException() : Divide(x, y);
+                                    break;
+
+                            }
+
+                            WriteLine($"Result {result}");
+                            num1 = result;
+                        }
+                        else
+                        {
+                            WriteLine("Woops! Invlaid Second Number.");
+                        }
+                        break;
+                    
+                    default:
+                        WriteLine("Hey! Please check your input- it needs to be a number or one of the operators listed!");
+                        break;
+
+                }
+                
             }
 
         }
     }
 }
+
 
