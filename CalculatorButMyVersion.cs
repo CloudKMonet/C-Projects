@@ -21,7 +21,7 @@ namespace Multiple_New_Projects_and_Revamps.New_Projects
             WriteLine("Please choose an operation by entering 1,2,3, or 4: ");
 
             //using the '\n' is a way to break up the prompt so when you run it the output is organized.
-            WriteLine(" 1.Add\n 2.Subtract\n 3.Multiply\n 4.Divide");
+            WriteLine(" 1.Add\n 2.Subtract\n 3.Multiply\n 4.Divide 5.+/-\n 6.%\n 7.AC");
 
             int op = Convert.ToInt32(Console.ReadLine());
 
@@ -36,6 +36,10 @@ namespace Multiple_New_Projects_and_Revamps.New_Projects
             static double Subtract(double x, double y) => x - y;
             static double Multiply(double x, double y) => x * y;
             static double Divide(double x, double y) => x / y;
+            static double Toggle(double x) => -x;
+            static double Percentage(double x) => x / 100;
+            static clear() => 0;
+            
 
             /*So why didn't we do it num1 + num2 and so on? The above code declared Add, Subtract, Multiply, and
              * Divide. The way I decided to do this created methods out of the operations, now they can be called by name
@@ -63,6 +67,15 @@ namespace Multiple_New_Projects_and_Revamps.New_Projects
                     else
                         WriteLine("Cannot Divide by Zero! :(");
                     break;
+                case 5:
+                    WriteLine($"Result: {Toggle(num1, num2)}");
+                    break;
+                case 6:
+                    WriteLine($"Result: {MPercentage(num1, num2)}");
+                    break;
+                case 7:
+                    WriteLine($"Result: {Multiply(num1, num2)}");
+                    break;
                 default:
                     WriteLine("Invalid Option- please input correctly, for the calcultaor to work as intended!");
                     break;
@@ -71,3 +84,4 @@ namespace Multiple_New_Projects_and_Revamps.New_Projects
         }
     }
 }
+
