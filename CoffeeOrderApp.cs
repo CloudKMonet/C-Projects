@@ -17,15 +17,15 @@ namespace Multiple_New_Projects_and_Revamps.New_Projects
     {
         static void Main()
         {
-            //the first thing I'll establish is a menu
+            //The first thing I'll establish is a menu for the user to pick a coffee from.
             //string[] menu = { "Americano", "Flat White", "Latte", "Frappe", "Cappuccino" };
               string[] menu = { "Americano - $2:50", "Flat White - $3.50", "Latte - $5.50", "Frappe - $6.50", "Cappuccino - $4.50" };
 
-            //now let's greet the user, and prompt them to choose a number from the menu
+            //Now we can greet the user, and prompt them to choose a numbered coffee item from the menu.
             WriteLine("Hi! Welcome to the Virtual order Coffee Shop!");
             WriteLine("Please choose your drink: ");
 
-            //thus us a loop that goes through the menu once an item is selected from the menu to make sure it was used
+            //This is a loop that goes through the menu once an item is selected from the menu- it also makes sure the menu was used.
             for (int i = 0; i < menu.Length; i++)
             {
                 WriteLine($"{i+1}. {menu[i]}");
@@ -34,12 +34,13 @@ namespace Multiple_New_Projects_and_Revamps.New_Projects
             //This what the price is without any choices!
             decimal totalPrice = 0.00m;
 
-            /* now the switch case is based on the user choice- so we declare choice as an intent, and list out according
-               to the menu items */
+            /* Now for the switch case; it is based on the user choice- so we declare choice as an intent, and list out according
+               to the menu items from earlier. */
 
             int choice = Convert.ToInt32(ReadLine());
 
-           /* switch (choice)
+           /* Old Code:
+           switch (choice)
             {
                 case 1:
                     WriteLine("You chose an Americano!");
@@ -66,7 +67,7 @@ namespace Multiple_New_Projects_and_Revamps.New_Projects
                     break;
            } */
 
-//depending on the user's choice, this will add the the totalPrice!
+//Depending on the user's choice, this will add the the totalPrice! This is the current code.
 switch (choice)
 {
     case 1:
@@ -95,15 +96,15 @@ switch (choice)
         WriteLine("Sorry we don't serve that here.");
         break;
 }
-           //I Have Added Here a section where the user can now also additionally choose a size for their drink- it will change the price a lil bit
+            //Here is a section where the user can now also additionally choose a size for their drink- it will change the price slightly.
  WriteLine("You've made your choice in drink order- this is the size menu for your drink of choice:\n 1.Small - $0.00\n 2.Medium - $0.10\n 3.Large - $0.12\n");
  WriteLine("Please Note: we don't offer x-large do to the dangerously high caffeine... No; we don't except bribes for... The 'forbidden size'...");
 
- //Here is for the user's chocie in coffee cup size! 
+ //Our user is prompted to pick a coffee cup size- a switch case is also going to be used here. 
  WriteLine("Now! Please enter your choice (either 1, 2, or 3): ");
  string sizeChoice = ReadLine();
 
- //again this will add to the total price :D
+ //With the Total Price from the user's choice, the size will be added in.
  switch (sizeChoice)
  {
      case "1":
@@ -123,12 +124,12 @@ switch (choice)
              break;
   }
 
-          //New Response total the price and shows the user the final amount due!
+          //The Real Final Output is the total price- so a formula like: users coffee choice + coffee cup size = totalPrice.
             WriteLine($"\nYour Price Total comes out to: ${totalPrice:F2}");
-
-            //Surpise!... I decide to not add another witch case for size differences- we'll do that later but for now?
-            //WriteLine("Don't worry- the only size coffee we serve is in a medium.... hope you like coffee!");
+          
+          //The old code for the final output: WriteLine("Don't worry- the only size coffee we serve is in a medium.... hope you like coffee!");
         }
     }
 }
+
 
