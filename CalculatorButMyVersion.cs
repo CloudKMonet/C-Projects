@@ -7,10 +7,10 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Console;
 
-/* This is a Claculator App. One that specifically uses switch case! Switch is a great way to mae the code editable
-    in case I want to add more to the code at a later date- which I probably will! I've added new functionality to the calcultor!
-    Feel free to take a look- I had to add another switch case to deal with the four new operations, exit, AC, Percent, and Toggle.
-*/
+/* This is a Claculator App. Switch Case is a great way to make my logic processing codes mored edit friendly- just in case I'm
+    looking into adding more functionality to the code at a later date. The most recent update was for functionality, and to make the 
+    console app calculator more interesting to use. I had added a second switch case to deal with the four new operations: Exit, AC,
+    Percent, and Toggle. In addition to the standard addition, subtraction, multiplication, and division. */
 
 namespace Multiple_New_Projects_and_Revamps.New_Projects
 {
@@ -20,10 +20,10 @@ namespace Multiple_New_Projects_and_Revamps.New_Projects
         static void Main()
         {
             WriteLine("This is my Calculator- but Better! :D");
-            //using the '\n' is a way to break up the prompt so when you run it the output is organized.
+            //Using the '\n' is a way to break up the prompt so when you run it the output is organized.
             WriteLine("Type a Number or one of the Operators: 1.Add\n 2.Subtract\n 3.Multiply\n 4.Divide\n 5.+/-\n 6.%\n 7.AC\n 8.Exit");
 
-            //new declarations for processing user input
+            //Mew declarations for processing user input.
             double num1 = 0;
             double num2 = 0;
             string input;
@@ -33,25 +33,26 @@ namespace Multiple_New_Projects_and_Revamps.New_Projects
             static double Subtract(double x, double y) => x - y;
             static double Multiply(double x, double y) => x * y;
             static double Divide(double x, double y) => x / y;
-            /*These have a urany operation aka a single x to do the opertion is needed */
+            //These have a urany operation aka a single x to do the opertion is needed.
             static double Toggle(double x) => -x;
             static double Percent(double x) => x / 100;
             static double Clear() => 0;
 
+            //I used a while loop to contain both switch cases, so the operations work as intended.
             while (true)
             {
                 WriteLine($"\nCurrent Number: {num1}");
                 WriteLine("Enter an operator or a number: ");
                 input = ReadLine().Trim();
 
-                //here we try parsing a new number as the input
+                //Here I use try parsing for a new number as the input.
                 if (double.TryParse(input,out double parsedInput ))
                 {
                     num1 = parsedInput;
                     continue;
                 }
 
-                //switch case for the input(s)
+                //Switch case for the input(s). First switch case is dedicated to the new operations.
                 switch (input.ToLower())
                 {
                     case "ac":
@@ -66,7 +67,7 @@ namespace Multiple_New_Projects_and_Revamps.New_Projects
                         num1 = Percent(num1);
                         WriteLine($"Result: {num1}");
                         break;
-                    //an exit would be helpful if the user wanted to end the app
+                    //An exit would be helpful if the user wanted to end the app.
                     case "exit":
                         WriteLine("Buh-Bye! Come back soon!");
                         return;
@@ -81,11 +82,11 @@ namespace Multiple_New_Projects_and_Revamps.New_Projects
                         if (double.TryParse(secondinput, out num2))
                         {
                             double result = 0;
-                            //here is the afformentioned 'x' and 'y' variables
+                            //Here is the afformentioned 'x' and 'y' variables.
                             double x = num1;
                             double y = num2;
 
-                            //with result declared we can clean up a little bit and instead of string the result...
+                            //With result declared we can clean up a little bit and instead string the results below.
                             switch (input)
                             {
                                 case "+": result = Add(x, y); break;
@@ -94,14 +95,15 @@ namespace Multiple_New_Projects_and_Revamps.New_Projects
 
                                 case "*": result = Multiply(x, y); break;
 
-                                //the usercannot divide by zero; that is a rule
+                                //The usercannot divide by zero- that is a standard mathematical rule.
                                 case "/":
-                                    //we'll make use of the Divide by Zero Exception Class to instantiate the rule above
+                                    //we'll make use of the Divide by Zero Exception Class to instantiate the rule above.
                                     result = (y == 0) ? throw new DivideByZeroException() : Divide(x, y);
                                     break;
 
                             }
 
+                            //String Result.
                             WriteLine($"Result {result}");
                             num1 = result;
                         }
@@ -110,7 +112,8 @@ namespace Multiple_New_Projects_and_Revamps.New_Projects
                             WriteLine("Woops! Invlaid Second Number.");
                         }
                         break;
-                    
+                        
+                    //In case input is wrong.
                     default:
                         WriteLine("Hey! Please check your input- it needs to be a number or one of the operators listed!");
                         break;
@@ -122,5 +125,6 @@ namespace Multiple_New_Projects_and_Revamps.New_Projects
         }
     }
 }
+
 
 
