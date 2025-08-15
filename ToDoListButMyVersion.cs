@@ -6,6 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*This is a pretty self-explanatory title for the console app. This is in fact an app that acts as a to do list. Users can input their to-do's, and see their to-dos. 
+  I assume the user looks at this daily thus the welcome message is "Your daily To-Do List". Fun Features: Multiple methods, data is stored as a string, and is recalled
+  during each subsequent usage. I wanted to do this mini console app, before I worked on a bigger web app version of it. */
+
 namespace Multiple_New_Projects_and_Revamps.New_Projects
 {
     internal class ToDoListButMyVersion
@@ -116,3 +120,4 @@ namespace Multiple_New_Projects_and_Revamps.New_Projects
         }
     }
 }
+
