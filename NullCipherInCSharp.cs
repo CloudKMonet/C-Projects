@@ -11,6 +11,7 @@ namespace Multiple_New_Projects_and_Revamps.New_Projects
     //The Program does encode the message, but decoding needs some fixing.
     internal class NullCipherInCSharp
     {
+        //Putting this static Random, outside of the code allows it to be recalled by the other methods in this program.
         static Random random = new Random();
         static void Main()
         {
@@ -24,10 +25,12 @@ namespace Multiple_New_Projects_and_Revamps.New_Projects
             //If and else statments for the decision tree.
             if (userChoice == "1")
             {
+                //Call the encode method.
                 Encode();
             }
             else if (userChoice == "2")
             {
+                //Call the decode method.
                 Decode();
             }
             else
@@ -41,13 +44,15 @@ namespace Multiple_New_Projects_and_Revamps.New_Projects
         static void Encode()
         {
 
+            //The first user input in the encode method.
             WriteLine("Please enter the message your encoding... secretly of course: ");
             string secretMssg = ReadLine().ToUpper();
 
+            //The second user input for the decode method.
             WriteLine("Enter a number (for example, entering the number 4 means every 4th number is part of the secret message): ");
             int numPattern = int.Parse(ReadLine());
 
-            //i made a word bank of fruits and vegetables- so the encoded message can be printed like a grocery list of sorts.
+            //I decided to make a word bank of fruits and vegetables- so the encoded message can be printed like a grocery list of sorts.
             string[] wordBank = {"apple", "apricot", "avocado" , "banana", "brocoli", "beetroot", "cucumber", "carrot", "cabbage", "cherry",
             "dates", "durian", "elderberry", "eggplant", "fig", "fennel", "ginger", "garlic", "galangal", "gherkins", "habanero", "horseradish",
             "huckleberry", "hazelnut", "iceberg lettuce", "idaho potato", "jackfruit", "jalapeno", "jackfruit", "jujube",
@@ -57,6 +62,7 @@ namespace Multiple_New_Projects_and_Revamps.New_Projects
             "ube", "umbrella squash", "vine spinach", "vidalia onion", "velevet beans", "victoria plum", "vanilla", "wheatgrass", "watermelon", "watercress",
             "winter melon", "wild leak", "ximenia", "xigua", "zuchinni", "zuchetta", "zuni bean", "zucca melon"};
 
+            //This is what will build the encoded message a string of 'grocery' list items.
             StringBuilder encodedMssg = new StringBuilder();
             int index = 0;
 
@@ -89,8 +95,10 @@ namespace Multiple_New_Projects_and_Revamps.New_Projects
             WriteLine("Similarly, please enter the number pattern you used previously: ");
             int numPattern = int.Parse(ReadLine());
 
+            //This takes the string array of words and remove the unused words from the grocery list.
             string[] words = list.Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
+            //With the unused words removed, the message can be strung back together.
             StringBuilder decodedMssg = new StringBuilder();
 
             //Grabbing the first letter from every nth word previously.
@@ -108,3 +116,4 @@ namespace Multiple_New_Projects_and_Revamps.New_Projects
 
     }
 }
+
