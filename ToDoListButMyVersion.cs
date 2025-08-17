@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-/*This is a pretty self-explanatory title for the console app. This is in fact an app that acts as a to do list. Users can input their to-do's, and see their to-dos. 
-  I assume the user looks at this daily thus the welcome message is "Your daily To-Do List". Fun Features: Multiple methods, data is stored as a string, and is recalled
-  during each subsequent usage. I wanted to do this mini console app, before I worked on a bigger web app version of it. */
+/*This is a pretty self-explanatory title for the console app. This is in fact an app that acts as a to do list. Users can input their to-do's, update their to-do's, 
+  delete their to-do's, and view their to-dos. I assume the user looks at this daily thus the welcome message is "Your daily To-Do List". Fun Features: Multiple 
+  methods, data is stored as a string, and is recalled during each subsequent usage. I wanted to do this mini console app, before I work on a bigger web app version of it. */
 
 namespace Multiple_New_Projects_and_Revamps.New_Projects
 {
@@ -24,7 +24,9 @@ namespace Multiple_New_Projects_and_Revamps.New_Projects
             LoadDailyToDos();
             while (true)
             {
+                //Clear the screen.
                 Clear();
+               //Welcome the user, and provide them options for what they want to do with the app.
                 WriteLine("---> Your Daily To Do List <---");
                 WriteLine("Please Pick a number from the List:\n 1. View To-Do\n 2. Add To-Do\n 3. Complete To-Do\n 4. Delete To-Do\n 5. Exit");
                 string choice = ReadLine();
@@ -32,6 +34,7 @@ namespace Multiple_New_Projects_and_Revamps.New_Projects
                 switch (choice)
                 {
                     case "1":
+                        //Each case- user's choice- calls the respective method labled by the options.
                         ViewToDo();
                         break;
                         case "2":
@@ -67,6 +70,7 @@ namespace Multiple_New_Projects_and_Revamps.New_Projects
             {
                 Clear();
                 WriteLine("---> Your To Do List, But Better <---");
+            //Check and see if their are any to-do's. If not then add to the list.
                 if (todos.Count == 0) WriteLine("No To Do's for Today!");
                 else
                     for (int i = 0;  i < todos.Count; i++) 
@@ -120,4 +124,5 @@ namespace Multiple_New_Projects_and_Revamps.New_Projects
         }
     }
 }
+
 
