@@ -57,7 +57,7 @@ namespace Multiple_New_Projects_and_Revamps.New_Projects
 
             }
 
-            //This is the Load-in for the.
+            //This is the Load-in for the To-Do List.
             static void LoadDailyToDos()
             {
                 if (File.Exists(filePathing)) 
@@ -124,5 +124,6 @@ namespace Multiple_New_Projects_and_Revamps.New_Projects
         }
     }
 }
+
 
 
