@@ -15,7 +15,7 @@ The projects that are added to this repository all generate output. Some are in 
 The Null Cipher has a slight issue with the decoding portion. Otherwise, I'm especially fond 
 of the Coffee Order App. But I enjoy the To-Do List app- a fun way to play with calling methods.
 
-##In Progress...
+## In Progress...
 * The next project to be added in this console app category should be a small tip calculator.
 
 BTW...A new repository will be added for my C# web apps.
