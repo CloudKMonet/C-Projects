@@ -50,11 +50,12 @@ namespace Multiple_New_Projects_and_Revamps.New_Projects
                 WriteLine("How many sheep do you count? (please input a number)");
                 int sheepCount = Convert.ToInt32(Console.ReadLine());
 
-                /*Here is our loop. The i = 1 stands for the input.
-                  i <= sheepCount means the numeber is less than or equal to the sheep count.
-                  i++ is a nice way to exit the loop after fulfilling the criteria inside. Which is why I used a thread.
-                  The thread simulates a person pausing to count "sheep" jumping/ or galloping in and out of view. 
+                /*i = 1 sets the starting point for our counter (we begin counting at the first sheep)
+                  i <= sheepCount is the loop’s condition: as long as i is less than or equal to the 
+                  total number of sheep, the loop continues. The Thread.Sleep(...) call makes the
+                  program pause between counts, which simulates a person taking time to count sheep one by one. 
                  */
+                
                 for (int i = 1; i <= sheepCount; i++) 
                 {
                     WriteLine($"{i} {sheepType}...");
@@ -73,5 +74,6 @@ namespace Multiple_New_Projects_and_Revamps.New_Projects
         }
     }
 }
+
 
 
