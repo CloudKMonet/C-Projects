@@ -5,6 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/* This is a simple tip calculator- where the user is asked to input their bill, and then they can input what 
+   amount that they would like to tip by (examples could be like an input of 10 or 15), the equation
+   accounts for converting the percentage into a decimal- but it's a simple formula :D and something 
+   fun for this mini tip calculator was the if else to allow the user to reinput without having to close and reopen
+   the app. */
+
 namespace Multiple_New_Projects_and_Revamps.New_Projects
 {
     internal class SimplyATipCalculator
@@ -40,3 +46,4 @@ namespace Multiple_New_Projects_and_Revamps.New_Projects
         }
     }
 }
+
